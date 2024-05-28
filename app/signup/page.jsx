@@ -20,7 +20,7 @@ const SignUp = () => {
   return (
     <fieldset className="flex flex-col w-6/12 mx-auto p-8 my-auto gap-6 relative">
       <legend
-        className={`${yeseva.className} text-8xl text-[#01bf64] text-opacity-50 absolute -z-1 top-[-2rem] right-[-2rem]`}
+        className={`${yeseva.className} text-6xl text-black text-opacity-20 absolute -z-1 top-[0.125rem] right-[-.5rem]`}
       >
         Sign up
       </legend>
