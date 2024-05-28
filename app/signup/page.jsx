@@ -2,6 +2,13 @@
 
 import Link from "next/link";
 import React, { useState } from "react";
+import { Yeseva_One } from "next/font/google";
+
+const yeseva = Yeseva_One({
+  subsets: ["latin"],
+  display: "swap",
+  weight: "400",
+});
 
 const SignUp = () => {
   const [user, setUser] = useState({});
@@ -11,7 +18,23 @@ const SignUp = () => {
   };
 
   return (
-    <fieldset className="flex flex-col w-6/12 mx-auto p-8 my-auto gap-6">
+    <fieldset className="flex flex-col w-6/12 mx-auto p-8 my-auto gap-6 relative">
+      <legend
+        className={`${yeseva.className} text-8xl text-[#01bf64] text-opacity-50 absolute -z-1 top-[-2rem] right-[-2rem]`}
+      >
+        Sign up
+      </legend>
+      <label className="flex items-start gap-2 flex-col relative z-10">
+        <span className="">Username</span>
+        <input
+          id="username"
+          placeholder="username"
+          type="text"
+          value={user.username}
+          onChange={(e) => setUser({ ...user, username: e.target.value })}
+          className="bg-white rounded-2xl py-2 px-3 h-16 w-full"
+        />
+      </label>
       <label className="flex items-start gap-2 flex-col">
         <span className="">Email</span>
         <input
