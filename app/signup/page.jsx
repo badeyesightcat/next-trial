@@ -45,7 +45,7 @@ const SignUp = () => {
         href={"/login"}
         className="border-b-4 hover:border-b-4 hover:border-b-[#01bf64] hover:border-dashed"
       >
-        Or if you want to login...
+        Or if you want to log in...
       </Link>
     </fieldset>
   );
