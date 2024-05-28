@@ -9,10 +9,10 @@ const Navbar = () => {
 
       <ul className="flex items-center gap-4">
         <li>
-          <Link href={"/login"}>Issue board</Link>
+          <Link href={"/issue-board"}>Issue board</Link>
         </li>
         <li>
-          <Link href={"/signup"}>Profile</Link>
+          <Link href={"/profile"}>Profile</Link>
         </li>
       </ul>
     </nav>
