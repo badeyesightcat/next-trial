@@ -5,16 +5,16 @@ import Link from "next/link";
 import { Yeseva_One } from "next/font/google";
 import cn from "classnames";
 
+type LogoProps = {
+  isGrayScaled?: boolean;
+  width?: number;
+};
+
 const yeseva = Yeseva_One({
   subsets: ["latin"],
   display: "swap",
   weight: "400",
 });
-
-type LogoProps = {
-  isGrayScaled?: boolean;
-  width?: number;
-};
 
 const Logo = ({ isGrayScaled, width = 84 }: LogoProps) => {
   return (
@@ -23,6 +23,7 @@ const Logo = ({ isGrayScaled, width = 84 }: LogoProps) => {
       className="inline-flex items-end"
     >
       <Image
+        priority={true}
         src={LogoImage}
         alt="logo"
         width={width}
