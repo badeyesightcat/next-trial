@@ -18,9 +18,9 @@ const Login = () => {
   };
 
   return (
-    <fieldset className="flex flex-col w-6/12 mx-auto p-8 my-auto gap-6 relative">
+    <fieldset className="flex flex-col w-6/12 mx-auto my-auto gap-4 relative max-w-md">
       <legend
-        className={`${yeseva.className} text-6xl text-black text-opacity-20 absolute -z-1 top-[0.125rem] right-[-1rem]`}
+        className={`${yeseva.className} text-6xl text-black text-opacity-20 absolute -z-1 top-[-2rem] right-[-1rem]`}
       >
         Log in
       </legend>
