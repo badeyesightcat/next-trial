@@ -2,19 +2,13 @@ import Image from "next/image";
 import React from "react";
 import LogoImage from "@/public/images/logo.png";
 import Link from "next/link";
-import { Yeseva_One } from "next/font/google";
 import cn from "classnames";
+import { yeseva } from "@/public/font";
 
 type LogoProps = {
   isGrayScaled?: boolean;
   width?: number;
 };
-
-const yeseva = Yeseva_One({
-  subsets: ["latin"],
-  display: "swap",
-  weight: "400",
-});
 
 const Logo = ({ isGrayScaled, width = 84 }: LogoProps) => {
   return (

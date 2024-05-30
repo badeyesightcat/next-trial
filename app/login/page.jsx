@@ -2,13 +2,7 @@
 
 import Link from "next/link";
 import React, { useState } from "react";
-import { Yeseva_One } from "next/font/google";
-
-const yeseva = Yeseva_One({
-  subsets: ["latin"],
-  display: "swap",
-  weight: "400",
-});
+import { yeseva } from "@/public/font";
 
 const Login = () => {
   const [user, setUser] = useState({});
