@@ -1,15 +1,49 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { yeseva } from "@/public/font";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const SignUp = () => {
-  const [user, setUser] = useState({});
+  const router = useRouter();
+  const [user, setUser] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+  const [buttonDisabled, setButtonDisabled] = useState(true);
+  const [formLoader, setFormLoader] = useState(false);
 
   const handleSignUp = async () => {
-    console.log(user);
+    try {
+      setFormLoader(true);
+      const response = await fetch("/api/user/signup", {
+        method: "POST",
+        body: JSON.stringify(user),
+      });
+      console.log("Signup success", response.data);
+      router.push("/login");
+    } catch (error) {
+      console.log("Signup failed:", error.message);
+      toast.error(error.message);
+    } finally {
+      setFormLoader(false);
+    }
   };
+
+  useEffect(() => {
+    if (
+      user.username.length > 0 &&
+      user.email.length > 0 &&
+      user.password.length > 0
+    ) {
+      setButtonDisabled(false);
+    } else {
+      setButtonDisabled(true);
+    }
+  }, [user]);
 
   return (
     <fieldset className="flex flex-col w-6/12 mx-auto my-auto gap-4 relative max-w-md">
@@ -53,8 +87,9 @@ const SignUp = () => {
       </label>
       <button
         type="button"
-        className="bg-[#01bf64] h-16 text-white text-xl mt-7"
+        className="bg-[#01bf64] h-16 text-white text-xl mt-7 disabled:bg-slate-300 disabled:cursor-not-allowed"
         onClick={handleSignUp}
+        disabled={buttonDisabled}
       >
         Sign up to manage issues
       </button>
