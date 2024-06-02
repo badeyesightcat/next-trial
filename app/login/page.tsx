@@ -1,18 +1,53 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { yeseva } from "@/public/font";
+import { useRouter } from "next/navigation";
+import { BarLoader } from "react-spinners";
+import toast from "react-hot-toast";
+import Spinner from "@/components/Spinner";
 
 const Login = () => {
-  const [user, setUser] = useState({});
+  const router = useRouter();
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [buttonDisabled, setButtonDisabled] = useState(true);
+  const [formLoader, setFormLoader] = useState(false);
 
   const handleLogin = async () => {
-    console.log(user);
+    try {
+      setFormLoader(true);
+
+      const response = await fetch("/api/user/login", {
+        method: "POST",
+        body: JSON.stringify(user),
+      });
+      console.log('Login success', response);
+      toast.success('Logged in successfully')
+      router.push("/profile");
+    } catch (error: any) {
+      console.log("Login failed", error.message);
+      toast.error(error.message);
+    } finally {
+      setFormLoader(false);
+    }
   };
+
+  useEffect(() => {
+    if (user.email.length > 0 && user.password.length > 0) {
+      setButtonDisabled(false);
+    } else {
+      setButtonDisabled(true);
+    }
+  }, [user]);
 
   return (
     <fieldset className="flex flex-col w-6/12 mx-auto my-auto gap-4 relative max-w-md">
+      {formLoader && <Spinner />}
       <legend
         className={`${yeseva.className} text-6xl text-black text-opacity-20 absolute -z-1 top-[-2rem] right-[-1rem]`}
       >
@@ -42,10 +77,11 @@ const Login = () => {
       </label>
       <button
         type="button"
-        className="bg-[#01bf64] h-16 text-white text-xl"
+        className="bg-[#01bf64] h-16 text-white text-xl disabled:bg-slate-300 disabled:cursor-not-allowed"
         onClick={handleLogin}
+        disabled={buttonDisabled}
       >
-        Sign up to manage issues
+        Log in to manage issues
       </button>
       <Link
         href={"/signup"}
