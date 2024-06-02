@@ -23,9 +23,9 @@ const SignUp = () => {
         method: "POST",
         body: JSON.stringify(user),
       });
-      console.log("Signup success", response.data);
+      console.log("Signup success", response);
       router.push("/login");
-    } catch (error) {
+    } catch (error: any) {
       console.log("Signup failed:", error.message);
       toast.error(error.message);
     } finally {
