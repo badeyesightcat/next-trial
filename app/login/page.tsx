@@ -4,7 +4,6 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { yeseva } from "@/public/font";
 import { useRouter } from "next/navigation";
-import { BarLoader } from "react-spinners";
 import toast from "react-hot-toast";
 import Spinner from "@/components/Spinner";
 
@@ -26,8 +25,8 @@ const Login = () => {
         method: "POST",
         body: JSON.stringify(user),
       });
-      console.log('Login success', response);
-      toast.success('Logged in successfully')
+      console.log("Login success", response);
+      toast.success("Logged in successfully");
       router.push("/profile");
     } catch (error: any) {
       console.log("Login failed", error.message);
