@@ -25,7 +25,7 @@ const Login = () => {
         method: "POST",
         body: JSON.stringify(user),
       });
-      console.log("Login success", response);
+      console.log("Login success");
       toast.success("Logged in successfully");
       router.push("/profile");
     } catch (error: any) {
