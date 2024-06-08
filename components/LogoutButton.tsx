@@ -9,7 +9,8 @@ const LogoutButton = () => {
   const handleLogout = async () => {
     try {
       const response = await fetch("/api/user/logout");
-      console.log(response);
+      const data = await response.json();
+      console.log(data);
       router.push("/login");
       toast.success("Logged out successfully");
     } catch (error: any) {
