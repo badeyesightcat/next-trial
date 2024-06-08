@@ -27,7 +27,7 @@ const Login = () => {
       });
       console.log("Login success");
       toast.success("Logged in successfully");
-      router.push("/profile");
+      router.push("/issue-board");
     } catch (error: any) {
       console.log("Login failed", error.message);
       toast.error(error.message);
