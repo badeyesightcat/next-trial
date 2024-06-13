@@ -2,40 +2,40 @@
 
 import React, { useState } from "react";
 
-type UserProfileProps = {
+interface UserProfileProps {
   params: {
     id: string;
   };
   searchParams: object;
-};
+}
 
-type UserInfo = {
+interface UserInfo {
   username?: string;
   email?: string;
   id?: string;
-};
+}
 
 const UserProfile = ({ params }: UserProfileProps) => {
-  const [userInfo, setUserInfo] = useState<UserInfo>({});
+  const [user, setUser] = useState<UserInfo>({});
 
-  const getuserInfo = async () => {
+  const getUserInfo = async () => {
     const response = await fetch("/api/user/me");
     const {
-      data: { userInfo },
+      data: { user },
     } = await response.json();
-    console.log(userInfo);
-    setUserInfo(userInfo);
+    console.log(user);
+    setUser(user);
   };
 
   return (
     <>
       <button
         className="m-4 p-2 bg-slate-400 rounded-lg text-white"
-        onClick={getuserInfo}
+        onClick={getUserInfo}
       >
         get information of the user
       </button>
-      <div>UserProfile of {userInfo.username}</div>
+      <div>UserProfile of {user.username}</div>
     </>
   );
 };
