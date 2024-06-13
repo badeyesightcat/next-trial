@@ -8,7 +8,7 @@ interface UserProfileProps {
 }
 
 const UserProfile = ({ params }: UserProfileProps) => {
-  console.log(params);
+  // console.log(params);
   return (
     <>
       <div>UserProfile of {params.id}</div>
