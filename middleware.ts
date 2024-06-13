@@ -20,10 +20,11 @@ export function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     "/",
-    "/issue-board",
-    "/profile",
     "/signup",
     "/login",
+    "/issue-board",
+    "/issue-board/:path*",
+    "/profile",
     "/profile/:path*",
   ],
 };
